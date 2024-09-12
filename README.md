@@ -91,6 +91,9 @@ policy_module(web_policy, 1.0)
 #Allow HTTPD to read and write within /var/www/html
 allow httpd_t var_t:file { read write };
 
+<img width="318" alt="21" src="https://github.com/user-attachments/assets/a8e084fd-51fc-4fab-a1bc-26df6f0519dd">
+
+
 policy_module(web_policy, 1.0): Declares a new SELinux policy module named web_policy with version 1.0.
 
 allow httpd_t var_t:file { read write };: Grants httpd_t (the type for HTTPD processes) read and write permissions on files labeled with var_t (the type for files in /var/www/html).
@@ -116,6 +119,9 @@ Verify the Policy Module is Loaded:
 
 semodule -l | grep web_policy
 
+<img width="310" alt="q" src="https://github.com/user-attachments/assets/4bc79eff-1c34-4555-b4e2-2f54d3743423">
+
+
 Lists all installed SELinux modules and filters the list to show if web_policy is among them.
 
 Test HTTPD Access:
@@ -126,11 +132,17 @@ echo "Test" | sudo tee /var/www/html/testfile
 
 Uses tee to create and write "Test" to testfile within /var/www/html.
 
+<img width="291" alt="w" src="https://github.com/user-attachments/assets/82349c54-67d2-430f-948d-632319bbd257">
+
+
 Access the file via HTTPD:
 
 curl http://localhost/testfile
 
 Verifies that the file is accessible via HTTPD, indicating the policy allows read access.
+
+<img width="310" alt="e" src="https://github.com/user-attachments/assets/40bd4ae6-d0aa-4902-9d1d-3eb8a0a6708a">
+
 
 Check SELinux Logs for Denials:
 
